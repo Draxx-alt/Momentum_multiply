@@ -1,0 +1,293 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─── Enums ───────────────────────────────────────────────────────────────────
+
+enum Pillar {
+  EAT
+  SLEEP
+  MOVE
+  BREATHE
+  CONNECT
+}
+
+enum EmotionalState {
+  OVERWHELMED
+  BURNT_OUT
+  UNMOTIVATED
+  STUCK
+  ANXIOUS
+  TIRED
+  DISCONNECTED
+  UNFOCUSED
+  LOST
+  READY_FOR_CHANGE
+  CURIOUS
+  HOPEFUL
+}
+
+enum CampaignPhase {
+  PHASE_1_IGNITE
+  PHASE_2_ENGAGE
+  PHASE_3_BUILD
+}
+
+enum Activation {
+  FUTURE_SELF_LETTER
+  THE_FUTURE_CALL
+  BLUEPRINT_OF_YOU
+  PRESCRIPTION_FOR_YOUR_FUTURE_SELF
+  NEXT_SELF_WALL
+  UNLOCKED_PODCAST
+  SARAY_KHUMALO_WEEKLY_CHALLENGES
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum LetterDeliveryStatus {
+  PENDING
+  DELIVERED
+  FAILED
+  CANCELLED
+}
+
+enum CompetitionEntrySource {
+  FUTURE_SELF_LETTER
+  THE_FUTURE_CALL
+  BLUEPRINT_OF_YOU
+  NEXT_SELF_WALL
+  PODCAST_LISTEN
+  WEEKLY_CHALLENGE
+  DIRECT
+}
+
+enum ConsentType {
+  DATA_PROCESSING
+  MARKETING_COMMUNICATIONS
+  COMPETITION_ENTRY
+  LETTER_DELIVERY
+}
+
+enum MemberStatus {
+  ACTIVE_MULTIPLY_MEMBER
+  MOMENTUM_MEMBER_NOT_MULTIPLY
+  NON_MEMBER
+}
+
+enum AccountProvider {
+  MULTIPLY_OAUTH
+  SESSION
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum ErrorSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+// ─── Models ──────────────────────────────────────────────────────────────────
+
+model User {
+  id               String    @id @default(cuid())
+  email            String?   @unique
+  name             String?
+  multiplyMemberId String?   @unique
+  isMember         Boolean   @default(false)
+  accountProvider  AccountProvider @default(SESSION)
+  sessionId        String?   @unique
+  role             UserRole  @default(USER)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  consents              Consent[]
+  futureSelfLetters     FutureSelfLetter[]
+  emotionalSelections   EmotionalStateSelection[]
+  nextSelfWallPosts     NextSelfWallPost[]
+  competitionEntries    CompetitionEntry[]
+  progressionRecords    UserProgression[]
+  challengeCompletions  ChallengeCompletion[]
+  podcastEngagements    PodcastEngagement[]
+
+  @@index([email])
+  @@index([multiplyMemberId])
+  @@index([sessionId])
+  @@index([accountProvider])
+}
+
+model Consent {
+  id            String      @id @default(cuid())
+  userId        String
+  consentType   ConsentType
+  ipAddress     String
+  userAgent     String?
+  isActive      Boolean     @default(true)
+  withdrawnAt   DateTime?
+  consentedAt   DateTime    @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, consentType])
+  @@index([userId])
+  @@index([consentType])
+}
+
+model FutureSelfLetter {
+  id                    String                @id @default(cuid())
+  userId                String
+  name                  String
+  surname               String?
+  dateOfBirth           DateTime?
+  email                 String
+  letterContent         String
+  scheduledDeliveryDate DateTime
+  deliveryStatus        LetterDeliveryStatus  @default(PENDING)
+  pdfUrl                String?
+  deliveredAt           DateTime?
+  imageUploadUrl        String?
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+
+  user    User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  entries CompetitionEntry[]
+
+  @@index([userId])
+  @@index([email])
+  @@index([scheduledDeliveryDate])
+  @@index([deliveryStatus])
+}
+
+model EmotionalStateSelection {
+  id                 String         @id @default(cuid())
+  userId             String?
+  sessionId          String?
+  emotionalState     EmotionalState
+  flippedToView      Boolean        @default(false)
+  partnerRecommended String?
+  createdAt          DateTime       @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([emotionalState])
+  @@index([createdAt])
+  @@index([sessionId])
+}
+
+model NextSelfWallPost {
+  id             String         @id @default(cuid())
+  userId         String
+  name           String
+  content        String
+  imageUrl       String?
+  approvalStatus ApprovalStatus @default(PENDING)
+  moderatedBy    String?
+  moderatedAt    DateTime?
+  rejectionReason String?
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([approvalStatus])
+  @@index([createdAt])
+  @@index([userId])
+}
+
+model CompetitionEntry {
+  id           String                 @id @default(cuid())
+  userId       String
+  email        String
+  name         String
+  mobileNumber String?
+  memberStatus MemberStatus
+  source       CompetitionEntrySource
+  entryCount   Int                    @default(1)
+  letterId     String?
+  createdAt    DateTime               @default(now())
+
+  user   User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  letter FutureSelfLetter? @relation(fields: [letterId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([email])
+  @@index([source])
+  @@index([createdAt])
+}
+
+model UserProgression {
+  id          String         @id @default(cuid())
+  userId      String
+  phase       CampaignPhase
+  activation  Activation
+  metadata    Json?
+  completedAt DateTime       @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, activation])
+  @@index([userId])
+  @@index([phase])
+  @@index([completedAt])
+}
+
+model ChallengeCompletion {
+  id             String   @id @default(cuid())
+  userId         String
+  challengeId    String
+  weekNumber     Int
+  title          String
+  proofUrl       String?
+  completedAt    DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, challengeId])
+  @@index([userId])
+  @@index([weekNumber])
+}
+
+model PodcastEngagement {
+  id            String   @id @default(cuid())
+  userId        String
+  episodeId     String
+  episodeTitle  String
+  action        String
+  progressSeconds Int?
+  completed     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([episodeId])
+}
+
+model ErrorLog {
+  id        String        @id @default(cuid())
+  message   String
+  stack     String?
+  context   String
+  severity  ErrorSeverity @default(MEDIUM)
+  metadata  Json?
+  createdAt DateTime      @default(now())
+
+  @@index([severity])
+  @@index([context])
+  @@index([createdAt])
+}

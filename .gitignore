@@ -1,0 +1,18 @@
+# secrets
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# temp
+/tmp/
+extracted_*/
+
