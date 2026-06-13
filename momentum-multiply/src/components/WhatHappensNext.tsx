@@ -19,9 +19,9 @@ const steps = [
 
 export default function WhatHappensNext() {
   return (
-    <section className="bg-brand-off-white py-20">
-      <div className="mx-auto max-w-[1440px] px-8">
-        <h2 className="mb-12 text-[40px] font-medium tracking-tight text-brand-dark-gray">
+    <section className="bg-brand-off-white py-12 lg:py-20">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8">
+        <h2 className="mb-8 text-[28px] font-medium tracking-tight text-brand-dark-gray sm:text-[34px] lg:text-[40px] lg:mb-12">
           What happens next?
         </h2>
 

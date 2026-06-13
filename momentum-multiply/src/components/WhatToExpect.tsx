@@ -37,13 +37,13 @@ const features = [
 
 export default function WhatToExpect() {
   return (
-    <section id="journey" className="bg-brand-off-white py-20">
-      <div className="mx-auto max-w-[1440px] px-8">
-        <h2 className="mb-12 text-[40px] font-medium tracking-tight text-brand-dark-gray">
+    <section id="journey" className="bg-brand-off-white py-12 lg:py-20">
+      <div className="mx-auto max-w-[1440px] px-4 md:px-8">
+        <h2 className="mb-8 text-[28px] font-medium tracking-tight text-brand-dark-gray sm:text-[34px] lg:text-[40px] lg:mb-12">
           What to expect
         </h2>
 
-        <div className="grid grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-3">
           {features.map((feature) => (
             <div key={feature.title} className="flex flex-col gap-0">
               <div

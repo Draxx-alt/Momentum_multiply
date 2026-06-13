@@ -3,12 +3,12 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-brand-navy pt-[100px]">
-      <div className="relative mx-auto grid max-w-[1440px] grid-cols-2 items-center gap-12 px-8 py-16 lg:py-24">
+      <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-center gap-8 px-4 py-12 md:grid-cols-2 md:gap-12 md:px-8 md:py-16 lg:py-24">
         <div className="z-10 flex flex-col gap-6">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-white/60">
             You didn&apos;t land here by accident.
           </p>
-          <h1 className="text-[56px] font-extrabold uppercase leading-[1.05] tracking-tight text-white">
+          <h1 className="text-[32px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[40px] lg:text-[56px]">
             This is your first step to the&nbsp;future you.
           </h1>
           <p className="max-w-md text-[15px] leading-relaxed text-white/80">

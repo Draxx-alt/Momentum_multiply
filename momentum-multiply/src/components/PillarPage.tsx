@@ -26,10 +26,10 @@ const contentCards = Array.from({ length: 10 }, (_, i) => ({
 function Footer() {
   return (
     <footer className="bg-brand-navy text-white">
-      <div className="mx-auto max-w-[1440px] px-8 py-16">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-8 lg:py-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
           <div>
-            <p className="text-[48px] font-bold leading-[1.1]">
+            <p className="text-[30px] font-bold leading-[1.1] sm:text-[36px] lg:text-[48px]">
               This is your journey. <br />
               Unlock the future you!
             </p>
@@ -80,42 +80,42 @@ export default function PillarPage({ title, subtitle }: PillarPageProps) {
   return (
     <main className="min-h-screen">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="mx-auto flex h-[100px] max-w-[1440px] items-center justify-between px-8">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-brand-navy">MOMENTUM</span>
-              <span className="text-xl font-light text-brand-navy">MULTIPLY</span>
+        <div className="mx-auto flex h-[60px] max-w-[1440px] items-center justify-between px-4 md:h-[100px] md:px-8">
+          <div className="flex items-center gap-4 md:gap-8">
+            <Link href="/" className="flex items-center gap-1 md:gap-2">
+              <span className="text-base font-bold tracking-tight text-brand-navy md:text-xl">MOMENTUM</span>
+              <span className="text-base font-light text-brand-navy md:text-xl">MULTIPLY</span>
             </Link>
-            <Link href="/continue" className="text-[15px] font-bold text-brand-navy">
+            <Link href="/continue" className="text-xs font-bold text-brand-navy md:text-[15px]">
               My journey
             </Link>
           </div>
           <a
             href="#"
-            className="rounded-full bg-brand-red px-8 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-red-700"
+            className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-red-700 md:px-8 md:py-2.5 md:text-sm"
           >
             Join Multiply
           </a>
         </div>
       </nav>
 
-      <section className="bg-brand-off-white pt-[100px]">
-        <div className="mx-auto max-w-[1440px] px-8">
-          <header className="py-12">
-            <h1 className="text-[40px] font-extrabold uppercase tracking-tight text-brand-navy">
+      <section className="bg-brand-off-white pt-[60px] md:pt-[100px]">
+        <div className="mx-auto max-w-[1440px] px-4 md:px-8">
+          <header className="py-8 md:py-12">
+            <h1 className="text-[30px] font-extrabold uppercase tracking-tight text-brand-navy lg:text-[40px]">
               {title}
             </h1>
-            <p className="mt-3 max-w-3xl text-[25px] leading-relaxed text-brand-dark-gray">
+            <p className="mt-3 max-w-3xl text-lg leading-relaxed text-brand-dark-gray lg:text-[25px]">
               {subtitle}
             </p>
           </header>
 
-          <nav className="flex items-center gap-0 rounded-lg bg-brand-light-gray">
+          <nav className="flex flex-wrap items-center rounded-lg bg-brand-light-gray">
             {allPillars.map((pillar) => (
               <Link
                 key={pillar.name}
                 href={pillar.href}
-                className={`px-8 py-3 text-[25px] font-bold transition-colors ${
+                className={`px-4 py-2 text-sm font-bold transition-colors md:px-8 md:py-3 md:text-[25px] ${
                   pillar.name === title
                     ? "text-brand-navy"
                     : "text-brand-dark-gray/40 hover:text-brand-dark-gray"
@@ -129,7 +129,7 @@ export default function PillarPage({ title, subtitle }: PillarPageProps) {
           <div className="flex flex-col gap-16 py-16">
             {sectionNames.map((sectionName) => (
               <div key={sectionName}>
-                <h2 className="mb-8 text-[32px] font-bold text-brand-dark-gray/50">
+                <h2 className="mb-8 text-2xl font-bold text-brand-dark-gray/50 lg:text-[32px]">
                   {sectionName}
                 </h2>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">

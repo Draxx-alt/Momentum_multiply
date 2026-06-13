@@ -3,10 +3,10 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-brand-navy text-white">
-      <div className="mx-auto max-w-[1440px] px-8 py-16">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-8 lg:py-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
           <div>
-            <p className="text-[48px] font-bold leading-[1.1]">
+            <p className="text-[30px] font-bold leading-[1.1] sm:text-[36px] lg:text-[48px]">
               This is your journey. <br />
               Unlock the future you!
             </p>

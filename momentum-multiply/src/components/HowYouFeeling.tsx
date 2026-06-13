@@ -54,14 +54,14 @@ export default function HowYouFeeling() {
     <section id="how-feeling" className="bg-brand-off-white">
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-1 gap-0 lg:grid-cols-[1fr_2fr]">
-          <div className="flex flex-col justify-center bg-brand-purple px-10 py-16 lg:px-14 lg:py-20">
+          <div className="flex flex-col justify-center bg-brand-purple px-6 py-12 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
             <a
               href="/continue"
-              className="mb-6 inline-block w-fit rounded-full border border-white/20 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.15em] text-white/80 transition-all hover:bg-white/10"
+              className="mb-4 inline-block w-fit rounded-full border border-white/20 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.15em] text-white/80 transition-all hover:bg-white/10 lg:mb-6"
             >
               Start your journey
             </a>
-            <h2 className="mb-4 text-[56px] font-extrabold uppercase leading-[1.05] tracking-tight text-white">
+            <h2 className="mb-4 text-[32px] font-extrabold uppercase leading-[1.05] tracking-tight text-white sm:text-[44px] lg:text-[56px]">
               How are you feeling today?
             </h2>
             <p className="max-w-sm text-lg leading-relaxed text-white/70">
@@ -70,7 +70,7 @@ export default function HowYouFeeling() {
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-2 bg-brand-light-gray p-4">
+          <div className="grid grid-cols-2 gap-2 bg-brand-light-gray p-4 sm:grid-cols-3">
             {emotions.map((emotion, index) => (
               <div key={emotion.label} className="flip-card h-[174px]">
                 <div

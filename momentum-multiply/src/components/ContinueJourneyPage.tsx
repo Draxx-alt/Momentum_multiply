@@ -52,10 +52,10 @@ const pillars = [
 function Footer() {
   return (
     <footer className="bg-brand-navy text-white">
-      <div className="mx-auto max-w-[1440px] px-8 py-16">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="mx-auto max-w-[1440px] px-4 py-12 md:px-8 lg:py-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:gap-12">
           <div>
-            <p className="text-[48px] font-bold leading-[1.1]">
+            <p className="text-[30px] font-bold leading-[1.1] sm:text-[36px] lg:text-[48px]">
               This is your journey. <br />
               Unlock the future you!
             </p>
@@ -106,30 +106,30 @@ export default function ContinueJourneyPage() {
   return (
     <main className="min-h-screen">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
-        <div className="mx-auto flex h-[100px] max-w-[1440px] items-center justify-between px-8">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-brand-navy">MOMENTUM</span>
-              <span className="text-xl font-light text-brand-navy">MULTIPLY</span>
+        <div className="mx-auto flex h-[60px] max-w-[1440px] items-center justify-between px-4 md:h-[100px] md:px-8">
+          <div className="flex items-center gap-4 md:gap-8">
+            <Link href="/" className="flex items-center gap-1 md:gap-2">
+              <span className="text-base font-bold tracking-tight text-brand-navy md:text-xl">MOMENTUM</span>
+              <span className="text-base font-light text-brand-navy md:text-xl">MULTIPLY</span>
             </Link>
-            <Link href="/continue" className="text-[15px] font-bold text-brand-navy">
+            <Link href="/continue" className="text-xs font-bold text-brand-navy md:text-[15px]">
               My journey
             </Link>
           </div>
           <a
             href="#"
-            className="rounded-full bg-brand-red px-8 py-2.5 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-red-700"
+            className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-red-700 md:px-8 md:py-2.5 md:text-sm"
           >
             Join Multiply
           </a>
         </div>
       </nav>
 
-      <section className="relative overflow-hidden bg-white pt-[100px]">
-        <div className="relative mx-auto max-w-[1440px] px-8 pb-16 pt-12">
-          <div className="absolute right-0 top-0 h-[416px] w-[416px] rounded-full bg-brand-lavender/30 blur-3xl" />
+      <section className="relative overflow-hidden bg-white pt-[60px] md:pt-[100px]">
+        <div className="relative mx-auto max-w-[1440px] px-4 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
+          <div className="absolute right-0 top-0 h-[200px] w-[200px] rounded-full bg-brand-lavender/30 blur-3xl md:h-[300px] md:w-[300px] lg:h-[416px] lg:w-[416px]" />
           <div className="relative z-10 max-w-2xl">
-            <h1 className="text-[56px] font-extrabold uppercase leading-[1.05] tracking-tight text-brand-red">
+            <h1 className="text-[32px] font-extrabold uppercase leading-[1.05] tracking-tight text-brand-red sm:text-[40px] lg:text-[56px]">
               A healthier, happier you – one small step at a time.
             </h1>
             <p className="mt-8 text-[15px] leading-relaxed text-brand-navy/80">
@@ -156,7 +156,7 @@ export default function ContinueJourneyPage() {
         >
           <div className="mx-auto max-w-[1440px] px-8">
             <div
-              className={`flex flex-col items-center gap-8 py-16 ${
+              className={`flex flex-col items-center gap-8 py-12 lg:py-16 ${
                 index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
               }`}
             >
@@ -169,7 +169,7 @@ export default function ContinueJourneyPage() {
                 />
               </div>
               <div className="flex flex-1 flex-col gap-4">
-                <h2 className="text-[40px] font-extrabold tracking-tight text-brand-navy">
+                <h2 className="text-[30px] font-extrabold tracking-tight text-brand-navy lg:text-[40px]">
                   {pillar.title}
                 </h2>
                 <p className="max-w-md text-lg leading-relaxed text-brand-dark-gray">
