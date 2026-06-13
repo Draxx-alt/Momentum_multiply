@@ -1,20 +1,22 @@
+import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import CampaignIntro from "@/components/CampaignIntro";
-import FivePillars from "@/components/FivePillars";
+import WhatToExpect from "@/components/WhatToExpect";
 import HowYouFeeling from "@/components/HowYouFeeling";
-import ActivationsHub from "@/components/ActivationsHub";
-import Competition from "@/components/Competition";
+import WhatHappensNext from "@/components/WhatHappensNext";
+import ChooseYourJourney from "@/components/ChooseYourJourney";
+import ComingSoon from "@/components/ComingSoon";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen">
+      <Nav />
       <Hero />
-      <CampaignIntro />
+      <WhatToExpect />
       <HowYouFeeling />
-      <FivePillars />
-      <ActivationsHub />
-      <Competition />
+      <WhatHappensNext />
+      <ChooseYourJourney />
+      <ComingSoon />
       <Footer />
     </main>
   );
