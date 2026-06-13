@@ -1,12 +1,22 @@
+import Link from "next/link";
+
 export default function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
       <div className="mx-auto flex h-[100px] max-w-[1440px] items-center justify-between px-8">
-        <div className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-brand-navy">
-            MOMENTUM
-          </span>
-          <span className="text-xl font-light text-brand-navy">MULTIPLY</span>
+        <div className="flex items-center gap-8">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="text-xl font-bold tracking-tight text-brand-navy">
+              MOMENTUM
+            </span>
+            <span className="text-xl font-light text-brand-navy">MULTIPLY</span>
+          </Link>
+          <Link
+            href="/continue"
+            className="text-[15px] font-bold text-brand-navy transition-colors hover:text-brand-purple"
+          >
+            My journey
+          </Link>
         </div>
         <a
           href="#"

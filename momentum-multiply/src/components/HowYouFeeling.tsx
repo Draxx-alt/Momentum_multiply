@@ -55,9 +55,12 @@ export default function HowYouFeeling() {
       <div className="mx-auto max-w-[1440px]">
         <div className="grid grid-cols-1 gap-0 lg:grid-cols-[1fr_2fr]">
           <div className="flex flex-col justify-center bg-brand-purple px-10 py-16 lg:px-14 lg:py-20">
-            <span className="mb-6 inline-block w-fit rounded-full border border-white/20 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.15em] text-white/80">
+            <a
+              href="/continue"
+              className="mb-6 inline-block w-fit rounded-full border border-white/20 px-5 py-2 text-xs font-extrabold uppercase tracking-[0.15em] text-white/80 transition-all hover:bg-white/10"
+            >
               Start your journey
-            </span>
+            </a>
             <h2 className="mb-4 text-[56px] font-extrabold uppercase leading-[1.05] tracking-tight text-white">
               How are you feeling today?
             </h2>

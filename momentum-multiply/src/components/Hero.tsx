@@ -19,7 +19,7 @@ export default function Hero() {
           </p>
           <div className="flex items-center gap-4 pt-2">
             <a
-              href="#journey"
+              href="/continue"
               className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold uppercase tracking-wider text-brand-red transition-all hover:bg-gray-100"
             >
               Begin your journey

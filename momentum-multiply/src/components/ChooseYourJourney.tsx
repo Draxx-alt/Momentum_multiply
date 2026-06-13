@@ -6,7 +6,7 @@ export default function ChooseYourJourney() {
       <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-0 lg:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-6 px-8 py-16 lg:px-14 lg:py-20">
           <a
-            href="#how-feeling"
+            href="/continue"
             className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-purple px-8 py-3 text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-brand-purple/80"
           >
             Choose your journey

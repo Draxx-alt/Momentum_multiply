@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-brand-navy text-white">
@@ -8,12 +10,12 @@ export default function Footer() {
               This is your journey. <br />
               Unlock the future you!
             </p>
-            <a
-              href="#how-feeling"
+            <Link
+              href="/continue"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand-purple px-8 py-3 text-sm font-bold uppercase tracking-wider transition-all hover:bg-brand-purple/80"
             >
               Choose your journey
-            </a>
+            </Link>
           </div>
 
           <div>
