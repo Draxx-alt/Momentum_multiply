@@ -116,12 +116,12 @@ export default function ContinueJourneyPage() {
               My journey
             </Link>
           </div>
-          <a
-            href="#"
+          <Link
+            href="/join"
             className="rounded-full bg-brand-red px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-red-700 md:px-8 md:py-2.5 md:text-sm"
           >
             Join Multiply
-          </a>
+          </Link>
         </div>
       </nav>
 
